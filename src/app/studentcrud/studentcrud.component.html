@@ -1,0 +1,70 @@
+<div class="container mt-4">
+    <div class="card">
+        <h1>Student Registration</h1>
+<form  id="registrationForm" #registerForm="ngForm" (ngSubmit)="register()" >
+    <div class="form-group">
+      <label  for="firstname" >FirstName</label>
+      <input type="text"   class="form-control" id="firstname" name="firstname" placeholder="Enter FirstName" #firstnameRef="ngModel" [(ngModel)]="this.firstname" required name="firstname">
+   <div *ngIf="firstnameRef.invalid && firstnameRef.touched" class="text-danger">First Name is required!</div>
+    
+    </div>
+
+    
+    <div class="form-group">
+      <div class="input-field">
+        <label for="middlename" data-error="Required Field!">MiddleName</label>
+        <input type="text"  class="validate form-control" id="middlename" name="middlename" placeholder="Enter MiddleName" #middlenameRef="ngModel" [(ngModel)]="this.middlename" required name="middlename" >
+        <div *ngIf="middlenameRef.invalid && middlenameRef.touched" class="text-danger">Middle Name is required!</div>
+      </div></div>
+      <div class="form-group">
+        <div class="input-field">
+        <label for="lastname" data-error="Required Field!">LastName</label>
+        <input type="text"  class="validate form-control" id="lastname" name="lastname" placeholder="Enter LastName" #lastnameRef="ngModel" [(ngModel)]="this.lastname" required  name="lastname" >
+        <div *ngIf="lastnameRef.invalid && lastnameRef.touched" class="text-danger">Last Name is required!</div>
+      </div>
+      </div>
+<div class="form-group">
+  <div class="input-field">
+  <label for="gender">gender</label>
+  <select class="validate from-control" id="gender" #genderRef="ngModel" [(ngModel)]="this.gender" required name="gender" >
+    
+    <option value="" disabled selected >select Gender</option>
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+  </select>
+  <div *ngIf="genderRef.invalid && genderRef.touched" class="text-danger">gender is required!</div>
+</div></div>
+      <div class="form-group">
+        <div class="input-field">
+        <label for="birthday" data-error="Required Field!">BirthDay</label> 
+        <input type="date"  class="validate form-control" id="birthday" name="birthday" placeholder="Enter Birthday"  name="birthday" #birthdayRef="ngModel" [(ngModel)]="this.birthday" required >
+        <div *ngIf="birthdayRef.invalid && birthdayRef.touched" class="text-danger">BirthDay is required!</div>
+      </div>
+      </div>
+      <div class="form-group">
+        <div class="input-field">
+        <div class="state" >
+            <label  for="state" data-error="Required Field!">select county</label>
+         <select class="browser-default" id="state" #stateRef="ngModel" [(ngModel)]="this.state" required name="state">
+          
+       <option value="" disabled selected> Select State</option>
+         <option value="Canada">canada</option>
+        <option value="Ethiopia">ethiopia</option>
+         <option value="Kenya">kenya</option>
+        <option value="Unitedkingdom">unitedkingdom</option>
+         </select>
+         <div *ngIf="stateRef.invalid && stateRef.touched" class="text-danger">State is required!</div>
+        </div></div>
+        <div class="form-group">
+          <div class="input-field">
+          <label for="email" data-error="Invalid email" >Emai                                                                                   l</label>
+          <input type="email" class="validate form-control" id="email" placeholder="Enter Email" #emailRef="ngModel" [(ngModel)]="this.email"  name="email" required> 
+          <div *ngIf="emailRef.invalid && stateRef.touched " class="text-danger">Email is required!</div>
+        </div>
+        </div>
+         </div> 
+         <div class="input-field">
+    <button type="submit" id="submitBtn" class="btn btn-primary"  >Submit</button></div>
+  </form>
+</div>
+</div>
