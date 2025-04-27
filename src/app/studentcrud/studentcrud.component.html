@@ -1,25 +1,89 @@
+
 <div class="container mt-4">
-    <div class="card">
+   <header class="heade">
+<nav class="navbar">
+  <img src="assets/dblight.jpg" alt="logo" class="logo" >
+  <h6 class="h6"> DBLIGHT SOFTWARE COMPANY</h6>
+  <div class="button">
+  <a href="#" id="hom" >HOME <span class="button1"></span></a>
+  <a href="#" id="abo" >ABOUT <span class="button1"></span></a>
+  <a href="#" id="con" >CONTACT <span class="button1"></span></a>
+  <a href="#" id="log" >LOGIN <span class="button1"></span></a>
+  </div>
+</nav>
+</header> 
+ <div>
+  <h1>Students List</h1>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>First Name</th> 
+        <th>Middle Name</th>
+      <th>Last Name</th>
+      <th>Gender</th>
+      <th>Birthday</th>
+      <th>State</th>
+      <th>Email</th>
+      <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of StudentArray">
+        <td>{{ item.firstname }}</td>
+      <td>{{ item.middlename }}</td>
+      <td>{{ item.lastname }}</td>
+      <td>{{ item.gender }}</td>
+      <td>{{ item.birthday }}</td>
+      <td>{{ item.state }}</td>
+      <td>{{ item.email }}</td>
+      <td>
+        <button (click)="editStudent(item.email)" class="btn btn-danger">edit</button>
+        <button (click)="deleteStudent(item.email)" class="btn btn-danger">Delete</button>
+      </td>
+      </tr>
+     </tbody>  
+  </table>
+ </div>
+  
+<!-- <div>
+  <h1>sudents list</h1>
+  <table>
+    <tr>
+      <td *ngFor="let item of StudentArray;"> {{item.firstname}} </td>
+    </tr>
+  </table>
+   <div *ngFor="let item of StudentArray;" > 
+{{item.firstname}}
+{{item.middlename}} -->
+  <!-- </div> -->
+<!-- </div>  -->
+<div class="card">
         <h1>Student Registration</h1>
-<form  id="registrationForm" #registerForm="ngForm" (ngSubmit)="register()" >
-    <div class="form-group">
+        
+<form class="form" id="registrationForm" #registerForm="ngForm" (ngSubmit)="register(registerForm)" >
+  
+  <div class="form-group">
+      <div class="input-field">
       <label  for="firstname" >FirstName</label>
-      <input type="text"   class="form-control" id="firstname" name="firstname" placeholder="Enter FirstName" #firstnameRef="ngModel" [(ngModel)]="this.firstname" required name="firstname">
-   <div *ngIf="firstnameRef.invalid && firstnameRef.touched" class="text-danger">First Name is required!</div>
-    
+      <input type="text"   class="form-control" id="firstname" name="firstname" placeholder="FirstName*" #firstnameRef="ngModel" (change)="checkconsole()" [ngModel]="this.firstname" required  name="firstname">
+      
+  {{firstname}}
+      <div *ngIf="firstnameRef.invalid && firstnameRef.touched" class="text-danger">First Name is required!</div>
+   </div>
     </div>
 
     
     <div class="form-group">
       <div class="input-field">
         <label for="middlename" data-error="Required Field!">MiddleName</label>
-        <input type="text"  class="validate form-control" id="middlename" name="middlename" placeholder="Enter MiddleName" #middlenameRef="ngModel" [(ngModel)]="this.middlename" required name="middlename" >
+        <input type="text"  class="validate form-control" id="middlename" name="middlename" placeholder="MiddleName*" #middlenameRef="ngModel" [(ngModel)]="this.middlename" required name="middlename" >
+      
         <div *ngIf="middlenameRef.invalid && middlenameRef.touched" class="text-danger">Middle Name is required!</div>
       </div></div>
       <div class="form-group">
         <div class="input-field">
         <label for="lastname" data-error="Required Field!">LastName</label>
-        <input type="text"  class="validate form-control" id="lastname" name="lastname" placeholder="Enter LastName" #lastnameRef="ngModel" [(ngModel)]="this.lastname" required  name="lastname" >
+        <input type="text"  class="validate form-control" id="lastname" name="lastname" placeholder="LastName*" #lastnameRef="ngModel" [(ngModel)]="this.lastname" required  name="lastname" >
         <div *ngIf="lastnameRef.invalid && lastnameRef.touched" class="text-danger">Last Name is required!</div>
       </div>
       </div>
@@ -37,7 +101,7 @@
       <div class="form-group">
         <div class="input-field">
         <label for="birthday" data-error="Required Field!">BirthDay</label> 
-        <input type="date"  class="validate form-control" id="birthday" name="birthday" placeholder="Enter Birthday"  name="birthday" #birthdayRef="ngModel" [(ngModel)]="this.birthday" required >
+        <input type="date"  class="validate form-control" id="birthday" name="birthday" placeholder="Birthday*"  name="birthday" #birthdayRef="ngModel" [(ngModel)]="this.birthday" required >
         <div *ngIf="birthdayRef.invalid && birthdayRef.touched" class="text-danger">BirthDay is required!</div>
       </div>
       </div>
@@ -54,17 +118,33 @@
         <option value="Unitedkingdom">unitedkingdom</option>
          </select>
          <div *ngIf="stateRef.invalid && stateRef.touched" class="text-danger">State is required!</div>
-        </div></div>
+        </div></div></div>
+        
         <div class="form-group">
           <div class="input-field">
-          <label for="email" data-error="Invalid email" >Emai                                                                                   l</label>
-          <input type="email" class="validate form-control" id="email" placeholder="Enter Email" #emailRef="ngModel" [(ngModel)]="this.email"  name="email" required> 
-          <div *ngIf="emailRef.invalid && stateRef.touched " class="text-danger">Email is required!</div>
+          <label for="email" data-error="Invalid email" >Email</label>
+          <input type="email" class="validate form-control" id="email" placeholder="Email*" #emailRef="ngModel" [(ngModel)]="this.email"  name="email" required email minlength="5" maxlength="50" email pattern="^[a-zA-Z0-9._%+-]+@gmail\.com$"> 
+          <div *ngIf="emailRef.invalid && emailRef.touched " class="text-danger">
+            <p *ngIf="emailRef.errors?.['required']">Email is required.</p>
+            <p *ngIf="emailRef.errors?.['email']">Invalid email format.</p>
+            <p *ngIf="emailRef.errors?.['minlength']">Email must be at leaset 5 characters.</p>
+            <p *ngIf="emailRef.errors?.['maxlength']">Email must be less than 50 characters.</p>
+            <p *ngIf="emailRef.errors?.['pattern']">^[a-zA-Z0-9._%+-]+example\\.com$</p>
+          </div>
         </div>
         </div>
-         </div> 
+         
          <div class="input-field">
-    <button type="submit" id="submitBtn" class="btn btn-primary"  >Submit</button></div>
+    <button type="submit" id="submitBtn" class="btn btn-primary" [disabled]="registerForm.invalid"  >Submit</button></div>
   </form>
+  </div>
+  <footer>
+    <div class="footer">
+      <p>© 2024  Education Form. All rights reserved.</p>
+    </div>
+  </footer>
 </div>
-</div>
+
+
+
+
