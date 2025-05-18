@@ -10,6 +10,7 @@ import{APP_ROUTES} from './app.routes';
 import { AppRoutes } from './app.routes';
 
 import { AppComponent } from './app.component';
+import {PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import{ StudentcrudComponent} from './studentcrud/studentcrud.component';
 import {provideHttpClient,withFetch} from '@angular/common/http';
 import { SelectModule } from 'primeng/select';
@@ -29,6 +30,7 @@ import { RouterModule } from '@angular/router';
     HomeComponent,
     StudentTableComponent ,
     StudentcrudComponent,
+    PagenotfoundComponent,
     ReactiveFormsModule,
   
     CommonModule,

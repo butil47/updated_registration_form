@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import{ StudentcrudComponent} from './studentcrud/studentcrud.component';
 import { StudentTableComponent } from './student-table/student-table.component';
-import { LandingpageComponent } from './landingpage/landingpage.component';
+import {  PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 
 export const APP_ROUTES: Routes = [
@@ -11,6 +11,7 @@ export const APP_ROUTES: Routes = [
       { path: 'home', component: HomeComponent }, // Default route
       { path: 'studentcrud', component: StudentcrudComponent },
       { path: 'students', component: StudentTableComponent },
+      { path: '**',  component: PagenotfoundComponent},
     
       
 ];
