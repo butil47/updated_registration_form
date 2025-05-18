@@ -4,16 +4,22 @@
 <nav class="navbar">
   <img src="assets/dblight.jpg" alt="logo" class="logo" >
   <h6 class="h6"> DBLIGHT SOFTWARE COMPANY</h6>
+ 
   <div class="button">
   <a href="#" id="hom" >HOME <span class="button1"></span></a>
   <a href="#" id="abo" >ABOUT <span class="button1"></span></a>
   <a href="#" id="con" >CONTACT <span class="button1"></span></a>
   <a href="#" id="log" >LOGIN <span class="button1"></span></a>
   </div>
+  <p-iconfield>
+    <input  type="text" pInputText placeholder ="Search " />
+    <p-inputicon  styleClass="pi pi-search"   />
+</p-iconfield>
 </nav>
 </header> 
  <div>
-  <h1>Students List</h1>
+  <!-- <h1>Students List</h1> -->
+<!--  
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -37,13 +43,13 @@
       <td>{{ item.state }}</td>
       <td>{{ item.email }}</td>
       <td>
-        <button (click)="editStudent(item.email)" class="btn btn-danger">edit</button>
+        <button (click)="editStudent(item.email)" class="btn btn-success">edit</button>
         <button (click)="deleteStudent(item.email)" class="btn btn-danger">Delete</button>
       </td>
       </tr>
      </tbody>  
   </table>
- </div>
+ </div> -->
   
 <!-- <div>
   <h1>sudents list</h1>
@@ -58,16 +64,20 @@
   <!-- </div> -->
 <!-- </div>  -->
 <div class="card">
-        <h1>Student Registration</h1>
+        <h2>Student Registration</h2>
         
-<form class="form" id="registrationForm" #registerForm="ngForm" (ngSubmit)="register(registerForm)" >
+<form class="form" id="registrationForm" #registerForm="ngForm" (ngSubmit)=" register(registerForm)" >
   
+
   <div class="form-group">
       <div class="input-field">
-      <label  for="firstname" >FirstName</label>
-      <input type="text"   class="form-control" id="firstname" name="firstname" placeholder="FirstName*" #firstnameRef="ngModel" (change)="checkconsole()" [ngModel]="this.firstname" required  name="firstname">
-      
-  {{firstname}}
+      <label  for="firstname" >FirstName <span style="color: red ;">*</span></label>
+      <p-inputgroup>
+        <p-inputgroup-addon>
+          <i class="pi pi-user"></i>
+      </p-inputgroup-addon>
+        <input pInputText class="form-control" #firstnameRef="ngModel" [(ngModel)]="this.firstname" placeholder="Firstname" id="firstname" name="firstname" (change)="checkconsole()" required class="validate form-control" />
+      </p-inputgroup>
       <div *ngIf="firstnameRef.invalid && firstnameRef.touched" class="text-danger">First Name is required!</div>
    </div>
     </div>
@@ -75,55 +85,80 @@
     
     <div class="form-group">
       <div class="input-field">
-        <label for="middlename" data-error="Required Field!">MiddleName</label>
-        <input type="text"  class="validate form-control" id="middlename" name="middlename" placeholder="MiddleName*" #middlenameRef="ngModel" [(ngModel)]="this.middlename" required name="middlename" >
-      
+        <label for="middlename" data-error="Required Field!">MiddleName<span style="color: red ;">*</span></label>
+        <p-inputgroup>
+          <p-inputgroup-addon>
+            <i class="pi pi-user"></i>
+        </p-inputgroup-addon>
+          <input pInputText class="form-control"  #middlenameRef="ngModel" [(ngModel)]="this.middlename" placeholder="middlename" id="middlename" name="middlename"  (change)="checkconsole()" required class="validate form-control" />
+      </p-inputgroup>
         <div *ngIf="middlenameRef.invalid && middlenameRef.touched" class="text-danger">Middle Name is required!</div>
       </div></div>
       <div class="form-group">
         <div class="input-field">
-        <label for="lastname" data-error="Required Field!">LastName</label>
-        <input type="text"  class="validate form-control" id="lastname" name="lastname" placeholder="LastName*" #lastnameRef="ngModel" [(ngModel)]="this.lastname" required  name="lastname" >
+        <label for="lastname" data-error="Required Field!">LastName<span style="color: red ;">*</span></label>
+        <p-inputgroup>
+          <p-inputgroup-addon>
+            <i class="pi pi-user"></i>
+        </p-inputgroup-addon>
+          <input pInputText  class="form-control"  #lastnameRef="ngModel" [(ngModel)]="this.lastname" placeholder="lastname" id="lastname" name="lastname"  (change)="checkconsole()" required class="validate form-control" />
+      </p-inputgroup>
         <div *ngIf="lastnameRef.invalid && lastnameRef.touched" class="text-danger">Last Name is required!</div>
       </div>
       </div>
 <div class="form-group">
   <div class="input-field">
-  <label for="gender">gender</label>
-  <select class="validate from-control" id="gender" #genderRef="ngModel" [(ngModel)]="this.gender" required name="gender" >
-    
-    <option value="" disabled selected >select Gender</option>
-    <option value="male">Male</option>
-    <option value="female">Female</option>
-  </select>
+  <label for="gender">gender<span style="color: red ;">*</span></label>
+  <p-dropdown 
+  [options]="sex"
+  optionLabel="name"
+  [(ngModel)]="selectedsex"
+  name="sex"
+  placeholder="gender"
+  required
+  #genderRef="ngModel" >
+  
+</p-dropdown>
   <div *ngIf="genderRef.invalid && genderRef.touched" class="text-danger">gender is required!</div>
 </div></div>
       <div class="form-group">
         <div class="input-field">
-        <label for="birthday" data-error="Required Field!">BirthDay</label> 
-        <input type="date"  class="validate form-control" id="birthday" name="birthday" placeholder="Birthday*"  name="birthday" #birthdayRef="ngModel" [(ngModel)]="this.birthday" required >
+        <label for="birthday" data-error="Required Field!">BirthDay<span style="color: red ;">*</span></label>
+        
+        <p-datepicker    id="birthday" [(ngModel)]="this.birthday" [ngModelOptions]="{standalone: true}"  [showIcon]="true" inputId="buttondisplay" [showOnFocus]="false" placeholder="birthday" #birthdayRef="ngModel"  name="birthday" required />
         <div *ngIf="birthdayRef.invalid && birthdayRef.touched" class="text-danger">BirthDay is required!</div>
       </div>
       </div>
-      <div class="form-group">
+
+      <div class="form-group">     
         <div class="input-field">
-        <div class="state" >
-            <label  for="state" data-error="Required Field!">select county</label>
-         <select class="browser-default" id="state" #stateRef="ngModel" [(ngModel)]="this.state" required name="state">
+          <label for="state">Select Country & State<span style="color: red ;">*</span></label>
+          <p-inputgroup>
+            <p-inputgroup-addon>
+                <i class="pi pi-map"></i>
+            </p-inputgroup-addon>
+            <p-dropdown
           
-       <option value="" disabled selected> Select State</option>
-         <option value="Canada">canada</option>
-        <option value="Ethiopia">ethiopia</option>
-         <option value="Kenya">kenya</option>
-        <option value="Unitedkingdom">unitedkingdom</option>
-         </select>
-         <div *ngIf="stateRef.invalid && stateRef.touched" class="text-danger">State is required!</div>
-        </div></div></div>
+            class="form-control" 
+            class="input"
+              [options]="countries"
+              optionLabel="name"
+              [(ngModel)]="selectedCountry"
+              name="state"
+              placeholder="Select a Country "
+              required
+              #stateRef="ngModel"
+            ></p-dropdown>
+        </p-inputgroup>
+
+          <div *ngIf="stateRef.invalid && stateRef.touched" class="text-danger">State is required!</div>
+        </div>
+      </div>
         
         <div class="form-group">
           <div class="input-field">
-          <label for="email" data-error="Invalid email" >Email</label>
-          <input type="email" class="validate form-control" id="email" placeholder="Email*" #emailRef="ngModel" [(ngModel)]="this.email"  name="email" required email minlength="5" maxlength="50" email pattern="^[a-zA-Z0-9._%+-]+@gmail\.com$"> 
+          <label for="email" data-error="Invalid email" >Email<span style="color: red ;">*</span></label>
+          <input type="email" class="form-control" id="email" placeholder="Email*" #emailRef="ngModel" [(ngModel)]="this.email"  name="email" required email minlength="5" maxlength="50" email pattern="^[a-zA-Z0-9._%+-]+@gmail\.com$" [disabled]="selectedStudent !==null"> 
           <div *ngIf="emailRef.invalid && emailRef.touched " class="text-danger">
             <p *ngIf="emailRef.errors?.['required']">Email is required.</p>
             <p *ngIf="emailRef.errors?.['email']">Invalid email format.</p>
@@ -135,7 +170,7 @@
         </div>
          
          <div class="input-field">
-    <button type="submit" id="submitBtn" class="btn btn-primary" [disabled]="registerForm.invalid"  >Submit</button></div>
+    <button type="submit"  routerLink="/students"   id="submitBtn" class="btn btn-primary" [disabled]="registerForm.invalid"  >Submit</button></div>
   </form>
   </div>
   <footer>

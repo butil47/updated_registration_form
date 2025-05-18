@@ -1,0 +1,52 @@
+<div class="table-container">
+<header class="heade">
+    <nav class="navbar">
+      <img src="assets/dblight.jpg" alt="logo" class="logo" >
+      <h6 class="h6"> DBLIGHT SOFTWARE COMPANY</h6>
+     
+      <div class="button">
+      <a href="#" id="hom" >HOME <span class="button1"></span></a>
+      <a href="#" id="abo" >ABOUT <span class="button1"></span></a>
+      <a href="#" id="con" >CONTACT <span class="button1"></span></a>
+      <a href="#" id="log" >LOGIN <span class="button1"></span></a>
+      </div>
+      <p-iconfield>
+        <input  type="text" pInputText placeholder ="Search " />
+        <p-inputicon  styleClass="pi pi-search"   />
+    </p-iconfield>
+    </nav>
+    </header> 
+     <div>
+      <h1>Students List</h1>
+     
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>First Name</th> 
+            <th>Middle Name</th>
+          <th>Last Name</th>
+          <th>Gender</th>
+          <th>Birthday</th>
+          <th>State</th>
+          <th>Email</th>
+          <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of StudentArray">
+            <td>{{ item.firstname }}</td>
+          <td>{{ item.middlename }}</td>
+          <td>{{ item.lastname }}</td>
+          <td>{{ item.gender }}</td>
+          <td>{{ item.birthday }}</td>
+          <td>{{ item.state }}</td>
+          <td>{{ item.email }}</td>
+          <td>
+            <button routerLink="/studentcrud"  (click)="editStudent(item.email)" class="btn btn-success">edit</button>
+            <button (click)="deleteStudent(item.email)" class="btn btn-danger">Delete</button>
+          </td>
+          </tr>
+         </tbody>  
+      </table>
+     </div>
+      </div>

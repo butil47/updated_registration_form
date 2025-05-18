@@ -1,0 +1,74 @@
+<p-button routerLink= "/"> Home </p-button>
+<p-button routerLink= "/studentcrud"> register </p-button>
+ <p-button label="Login"  routerLink="/login" class="w-full" styleClass="p-button-primary mb-3"></p-button>
+
+<div class="login-container">
+  <header class="heade">
+      <nav class="navbar">
+        <img src="assets/dblight.jpg" alt="logo" class="logo" >
+        <h6 class="h6"> DBLIGHT SOFTWARE COMPANY</h6>
+       
+        <div class="button">
+        <a href="#" id="hom" >HOME <span class="button1"></span></a>
+        <a href="#" id="abo" >ABOUT <span class="button1"></span></a>
+        <a href="#" id="con" >CONTACT <span class="button1"></span></a>
+        <a href="#" id="log" >LOGIN <span class="button1"></span></a>
+        </div>
+        <p-iconfield>
+          <input  type="text" pInputText placeholder ="Search " />
+          <p-inputicon  styleClass="pi pi-search"   />
+      </p-iconfield>
+      </nav>
+      </header> 
+       <div>
+
+<div class="home-container">
+  <div class="login-form-container">
+    <h1 class="text-center">Login</h1>
+  
+    <div class="p-field">
+      <label  class="em" for="email">Email</label>
+      <input id="email" type="email" pInputText placeholder="Enter your email" />
+    </div>
+  
+    <div class="p-field">
+      <label class="em" for="password">Password</label>
+      <p-password
+        inputId="password"
+        [feedback]="false"
+        placeholder="Enter your password"
+      ></p-password>
+    </div>
+  
+    <div class="text-right mb-3">
+      <a href="#" class="p-link">Forgot Password?</a>
+    </div>
+  
+    <p-button label="Login"  routerLink="/login" class="w-full" styleClass="p-button-primary mb-3"></p-button>
+  
+    <div class="text-center mb-2">
+      <span>Don't have an account? <p-button routerLink="/studentcrud"  class="p-link">Register</p-button></span>
+    </div>
+  
+    <p-button
+      label="Login with Google"
+      icon="pi pi-google"
+      class="w-full"
+      styleClass="p-button-danger"
+    ></p-button>
+  </div>
+  <router-outlet></router-outlet>
+
+
+
+<!-- 
+    <h1>DBLIGHT Software</h1>
+  
+    <div class="button-group">
+      <button routerLink="/login" class="btn btn-primary">Login</button>
+  
+      <button (click)="navigateToStudentCrud()" class="btn btn-success">Sign Up</button>
+    </div>
+  </div>
+  <router-outlet></router-outlet> -->
+  <!-- (click)="navigateToStudentCrud()" -->

@@ -1,0 +1,104 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+.heade{
+  color: rgba(0, 0, 0, 0.87);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+  max-width: 1350px;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 4px;
+  overflow: hidden;
+  align-items: center;
+  background-color:rgb(5, 96, 91);
+  width: 100%;
+  margin-left: auto;
+  box-sizing: border-box;
+  margin-right: auto;
+  display: block;
+  padding-left: 13px;
+      padding-right: 24px;
+    
+}
+.navbar{
+  position: relative;
+  display: flex;
+  align-items: center;
+padding-right: 16px;
+flex-direction: row;
+width:100%;
+   
+}
+.h6{
+  color:wheat;
+  flex-grow: 1;
+margin-top: 15px;
+    font-weight: 500;
+    font-size: 1.55rem;
+      
+  }
+
+.logo{
+  
+  width: 70px;
+  height: 60px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 5px;
+  margin-right: 20px;
+  
+
+
+  
+  
+}
+.button{
+  display: flex;
+    justify-content: flex-end;
+    gap:10px;
+  align-items: center;
+    align-items: center;
+      background-color: transparent;
+      cursor: pointer; 
+      font-family: "Times New Roman", Times, serif;
+      font-weight: 500;
+      font-size: 0.875rem;
+      min-width: 64px;
+    padding: 6px 8px;
+    color: black;
+    
+}
+.pi-search{
+ text-align: center;
+}
+.button1{
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+  inset: 0px;
+  border-radius: inherit;
+}
+#hom {
+  color: wheat;
+}
+#hom:hover {
+  background:lightblue
+}
+#abo{
+  color:wheat;
+}
+#abo:hover {
+  background:lightblue
+}
+#log{
+  color: wheat;
+  
+}
+#log:hover {
+  background:lightblue
+}
+#con{
+  color: wheat;
+  
+}
+#con:hover {
+  background:lightblue
+}
